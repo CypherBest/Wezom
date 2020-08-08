@@ -485,6 +485,7 @@ header:before {
 
 .companies {
   margin-bottom: 120px;
+  margin-top: 150px;
 }
 
 .companies-info {
@@ -778,6 +779,11 @@ header:before {
   bottom: 40px;
 }
 
+.block__promotions .block__container .right__promo .right__promo-content .promo__content .block__item:hover {
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
 .block__promotions .block__container .left__promo {
   max-width: 313px;
 }
@@ -939,11 +945,11 @@ footer .links__social a {
   .container {
     max-width: 900px;
   }
-  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__link {
-    margin: 30px auto;
-  }
-  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__link .block__item {
+  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__item {
     margin: 1px;
+  }
+  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__item .block__link {
+    margin: 30px auto;
   }
   .container-footer {
     max-width: 900px;
@@ -957,7 +963,7 @@ footer .links__social a {
   .block__promotions .block__container .right__promo {
     width: 700px;
   }
-  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__link {
+  .block__promotions .block__container .right__promo .right__promo-content .promo__content .block__item {
     margin: 0 auto;
   }
   .container-footer {

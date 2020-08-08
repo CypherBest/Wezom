@@ -124,6 +124,7 @@ header:before {
 
 .companies {
   margin-bottom: 120px;
+  margin-top: 150px;
 }
 .companies-info {
   display: flex;
@@ -343,6 +344,14 @@ header:before {
               }
             }
           }
+        }
+        .promo__content{
+          
+            .block__item:hover{
+              box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+            }
+          
         }
       }
     }
@@ -575,10 +584,10 @@ footer {
       .right__promo {
         .right__promo-content {
           .promo__content {
-            .block__link {
-              margin: 30px auto;
-              .block__item{
-                margin: 1px;
+            .block__item {
+              margin: 1px;
+              .block__link{
+                margin: 30px auto;
               }
             }
           }
@@ -603,7 +612,7 @@ footer {
         width: 700px;
         .right__promo-content{
           .promo__content{
-            .block__link{
+            .block__item{
               margin: 0 auto;
             }
           }

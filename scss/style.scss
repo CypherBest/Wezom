@@ -23,6 +23,11 @@
     url(../fonts/PFDinTextPro-Regular.ttf);
   font-family: PFDinTextPro-Regulal;
 }
+
+@font-face{
+  src: url(../fonts/fa-solid-900.woff2);
+  font-family: fontawesome;
+}
 a{
   text-decoration: none;
 }
@@ -156,7 +161,7 @@ header:before {
 }
 
 .main-block {
-  z-index: -3;
+  z-index: 1;
   background: #ffffff;
   width: 335px;
   height: 100%;
@@ -167,25 +172,22 @@ header:before {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .block-img {
-  max-height: 245px;
+  height: 245px;
   box-shadow: inset 0 -10px 50px #000000;
   position: relative;
 }
 .back-img {
-  z-index: -2;
+  z-index: -1;
   position: relative;
-  width: 335px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.header-img {
-  display: flex;
-  justify-content: space-between;
+.cloud {
   position: absolute;
   top: 10px;
   left: 20px;
-  right: 20px;
-}
-.cloud {
   background: url(../images/front_img.png) no-repeat;
   background-size: cover;
   min-height: 30px;
@@ -198,13 +200,87 @@ header:before {
     font-family: Gotham Pro Bold;
   }
 }
-.block-like {
-  height: 30px;
-  width: 30px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+.block-like{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  height: 35px;
+  width: 35px;
+}
+.like {
+  position: relative;
 }
 
+.like_btn {
+  cursor:pointer;
+  padding: 10px;
+  background:#fff;
+  border-radius:5px;
+  background: rgba(0, 0, 0, 0.3);
+  display:inline-block;
+  color:#aaa;
+  transition:.2s;
+}
+
+.like_btn:hover {
+  color:#666;
+}
+
+.like_btn:before {
+  font-family:fontawesome;
+  content:'\f004';
+  font-style:normal;
+}
+
+.like_text {
+  position: absolute;
+  top:-40px;
+  left:0;
+  right:0;
+  visibility: hidden;
+  transition:.6s;
+  z-index:-2;
+  font-size:2px;
+  color:transparent;
+  font-weight:400;
+}
+
+.like_btn.press {
+  animation: size .4s;
+  color:#e23b3b;
+}
+
+.like_text.press {
+  bottom:120px;
+  font-size:14px;
+  visibility:visible;
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #e23b3b;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@keyframes size {
+  0% {
+    padding:10px 12px 8px;
+  }
+  50% {
+    padding:14px 16px 12px;  
+    margin-top:-4px;
+  }
+  100% {
+    padding:10px 12px 8px;
+  }
+}
 .block-text {
   position: absolute;
   bottom: 20px;
@@ -417,127 +493,95 @@ header:before {
 }
 footer {
   background: #ffffff;
+}
+
   .footer {
     display: flex;
     justify-content: space-between;
     padding: 40px 0;
     align-items: center;
-
-    &__links {
-      p {
-        margin: 0;
-      }
-    }
-
-    &__add {
-      display: flex;
-    }
+  }
+  .links-text{
+    font-size: 16px;
+    font-family: Gotham Pro Medium;
+    color: #9da2a8;
   }
 
   .links {
-    &__text {
-      margin: 0;
-    }
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .link {
+    margin-right: 30px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 28px;
+    transition: 0.6s linear;
+    position: relative;
+  }
+  .link:hover{
+    transform: scale(1.3);
+  }
+  .link i:before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-size: 200% 200%;
+    background-position: 100% 100%;
+    top: 0;
+    left: 0;
+    line-height: 30px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-color 0.5s linear;
+  }
+  
+  a:hover i:before{
+    background-position: 0% 0%;
+  }
 
-    &__social {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-      a {
-        margin-right: 30px;
-      }
-    }
+  .fa-facebook-f:before{
+    background-image: linear-gradient(135deg, #3b5998 50%, #fffc5a 50%);
+  }
+
+  .fa-twitter:before{
+    background-image: linear-gradient(135deg, #1da1f2 50%, #fffc5a 50%);
+  }
+
+  .fa-instagram:before{
+    background-image: linear-gradient(135deg, #c32aa3 50%, #fffc5a 50%);
+  }
+
+  .fa-youtube:before{
+    background-image: linear-gradient(135deg, #d71e18 50%, #fffc5a 50%);
+  }
+.autograph {
+  display: flex;
+  img{
+    width: 35px;
+    height: 35px;
   }
 }
-
-.add {
-  &__text {
-    margin-left: 10px;
-  }
-}
-.text {
-  &__site {
+.auto-text {
+  margin-left: 10px;
+  .text-site {
     margin: 0;
     color: #94999f;
     font-size: 12px;
     font-family: PFDinTextPro-Regulal;
   }
 
-  &__w-square {
+  .text-w-square {
     margin: 0;
     font-size: 18px;
     font-family: Gotham Pro Bold;
   }
 }
 
-
-//LIKE BTN
-// .like {
-//   height:100px;
-//   margin:0 auto;
-//   position: relative;
-// }
-
-// i {
-//   cursor:pointer;
-//   padding:10px 12px 8px;
-//   background:#fff;
-//   border-radius:50%;
-//   display:inline-block;
-//   margin:0 0 15px;
-//   color:#aaa;
-//   transition:.2s;
-// }
-
-// i:hover {
-//   color:#666;
-// }
-
-// i:before {
-//   font-family:fontawesome;
-//   content:'\f004';
-//   font-style:normal;
-// }
-
-// .liked {
-//   position: absolute;
-//   bottom:70px;
-//   left:0;
-//   right:0;
-//   visibility: hidden;
-//   transition:.6s;
-//   z-index:-2;
-//   font-size:2px;
-//   color:transparent;
-//   font-weight:400;
-// }
-
-// i.press {
-//   animation: size .4s;
-//   color:#e23b3b;
-// }
-
-// span.press {
-//   bottom:120px;
-//   font-size:14px;
-//   visibility:visible;
-//   animation: fade 1s;
-// }
-
-// @keyframes fade {
-//   0% {color: transparent;}
-//   50% {color: #e23b3b;}
-//   100% {color: transparent;}
-// }
-
-// @keyframes size {
-//   0% {padding:10px 12px 8px;}
-//   50% {padding:14px 16px 12px;  
-//     margin-top:-4px;}
-//   100% {padding:10px 12px 8px;}
-// }
-
-//END LIKE BTN
 @media (max-width: 1470px) {
   .container {
     max-width: 1200px;

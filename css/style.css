@@ -366,6 +366,11 @@ template {
   font-family: PFDinTextPro-Regulal;
 }
 
+@font-face {
+  src: url(../fonts/fa-solid-900.woff2);
+  font-family: fontawesome;
+}
+
 a {
   text-decoration: none;
 }
@@ -535,7 +540,7 @@ header:before {
 }
 
 .main-block {
-  z-index: -3;
+  z-index: 1;
   background: #ffffff;
   width: 335px;
   height: 100%;
@@ -551,32 +556,25 @@ header:before {
 }
 
 .block-img {
-  max-height: 245px;
+  height: 245px;
   -webkit-box-shadow: inset 0 -10px 50px #000000;
           box-shadow: inset 0 -10px 50px #000000;
   position: relative;
 }
 
 .back-img {
-  z-index: -2;
+  z-index: -1;
   position: relative;
-  width: 335px;
-}
-
-.header-img {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  right: 20px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .cloud {
+  position: absolute;
+  top: 10px;
+  left: 20px;
   background: url(../images/front_img.png) no-repeat;
   background-size: cover;
   min-height: 30px;
@@ -592,10 +590,115 @@ header:before {
 }
 
 .block-like {
-  height: 30px;
-  width: 30px;
-  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  height: 35px;
+  width: 35px;
+}
+
+.like {
+  position: relative;
+}
+
+.like_btn {
+  cursor: pointer;
+  padding: 10px;
+  background: #fff;
   border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  color: #aaa;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.like_btn:hover {
+  color: #666;
+}
+
+.like_btn:before {
+  font-family: fontawesome;
+  content: '\f004';
+  font-style: normal;
+}
+
+.like_text {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  -webkit-transition: .6s;
+  transition: .6s;
+  z-index: -2;
+  font-size: 2px;
+  color: transparent;
+  font-weight: 400;
+}
+
+.like_btn.press {
+  -webkit-animation: size .4s;
+          animation: size .4s;
+  color: #e23b3b;
+}
+
+.like_text.press {
+  bottom: 120px;
+  font-size: 14px;
+  visibility: visible;
+  -webkit-animation: fade 1s;
+          animation: fade 1s;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #e23b3b;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@keyframes fade {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #e23b3b;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@-webkit-keyframes size {
+  0% {
+    padding: 10px 12px 8px;
+  }
+  50% {
+    padding: 14px 16px 12px;
+    margin-top: -4px;
+  }
+  100% {
+    padding: 10px 12px 8px;
+  }
+}
+
+@keyframes size {
+  0% {
+    padding: 10px 12px 8px;
+  }
+  50% {
+    padding: 14px 16px 12px;
+    margin-top: -4px;
+  }
+  100% {
+    padding: 10px 12px 8px;
+  }
 }
 
 .block-text {
@@ -854,7 +957,7 @@ footer {
   background: #ffffff;
 }
 
-footer .footer {
+.footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -867,21 +970,13 @@ footer .footer {
           align-items: center;
 }
 
-footer .footer__links p {
-  margin: 0;
+.links-text {
+  font-size: 16px;
+  font-family: Gotham Pro Medium;
+  color: #9da2a8;
 }
 
-footer .footer__add {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-footer .links__text {
-  margin: 0;
-}
-
-footer .links__social {
+.links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -891,22 +986,82 @@ footer .links__social {
   margin-top: 20px;
 }
 
-footer .links__social a {
+.link {
   margin-right: 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 28px;
+  -webkit-transition: 0.6s linear;
+  transition: 0.6s linear;
+  position: relative;
 }
 
-.add__text {
+.link:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.link i:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-size: 200% 200%;
+  background-position: 100% 100%;
+  top: 0;
+  left: 0;
+  line-height: 30px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-transition: background-color 0.5s linear;
+  transition: background-color 0.5s linear;
+}
+
+a:hover i:before {
+  background-position: 0% 0%;
+}
+
+.fa-facebook-f:before {
+  background-image: linear-gradient(135deg, #3b5998 50%, #fffc5a 50%);
+}
+
+.fa-twitter:before {
+  background-image: linear-gradient(135deg, #1da1f2 50%, #fffc5a 50%);
+}
+
+.fa-instagram:before {
+  background-image: linear-gradient(135deg, #c32aa3 50%, #fffc5a 50%);
+}
+
+.fa-youtube:before {
+  background-image: linear-gradient(135deg, #d71e18 50%, #fffc5a 50%);
+}
+
+.autograph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.autograph img {
+  width: 35px;
+  height: 35px;
+}
+
+.auto-text {
   margin-left: 10px;
 }
 
-.text__site {
+.auto-text .text-site {
   margin: 0;
   color: #94999f;
   font-size: 12px;
   font-family: PFDinTextPro-Regulal;
 }
 
-.text__w-square {
+.auto-text .text-w-square {
   margin: 0;
   font-size: 18px;
   font-family: Gotham Pro Bold;

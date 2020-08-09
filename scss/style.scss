@@ -590,10 +590,13 @@ footer {
     margin-bottom: 10px;
     }
 
-  .main-link {
+  .main-block {
     
       margin: 20px auto;
     
+  }
+  .promo__content{
+    flex-grow: 1;
   }
 
   .block__promotions {
@@ -602,11 +605,7 @@ footer {
       flex-grow: 1;
       .right__promo {
         margin: 20px auto;
-        // .right__promo_content {
-        //   .promo__content {
-        //     flex-grow: 1;
-        // }
-        // }
+        
       }
     }
     .left__promo {
@@ -629,7 +628,7 @@ footer {
         .right__promo-content {
           .promo__content {
             .block__item {
-              margin: 1px;
+              margin: 20px auto;
               .block__link{
                 margin: 30px auto;
               }
@@ -639,6 +638,7 @@ footer {
       }
     }
   }
+  
   .container-footer {
     max-width: 900px;
   }
@@ -656,6 +656,7 @@ footer {
         width: 700px;
         .right__promo-content{
           .promo__content{
+
             .block__item{
               margin: 0 auto;
             }
@@ -670,21 +671,17 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .header {
-    align-items: center;
-    .menu {
-      &__link {
-        // font-size: 14px;
-        margin: 5px;
-      }
-    }
-  }
+
   .container{
     max-width: 500px;
   }
-
-  .info-text {
-      font-size: 20px;
+  .companies-info{
+    flex-direction: column;
+    // margin: 0;
+    .info-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
   }
 
   .block__promotions {
@@ -781,4 +778,5 @@ footer {
       font-size: 24px;
     }
   }
+
 }
